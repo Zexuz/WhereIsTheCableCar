@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.0.0
+MinimumVisualStudioVersion = 10.0.0.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhereIsTheCableCar", "WhereIsTheCableCar.csproj", "{4252B872-DA9A-426D-AE5D-1EF6C2F40382}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runner", "Runner\Runner.csproj", "{DE6B65B8-4980-4602-8BAF-4E3A35E323F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCanvas", "WpfCanvas\WpfCanvas.csproj", "{72B2E882-E125-493C-B431-C17682B89912}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4252B872-DA9A-426D-AE5D-1EF6C2F40382}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4252B872-DA9A-426D-AE5D-1EF6C2F40382}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4252B872-DA9A-426D-AE5D-1EF6C2F40382}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4252B872-DA9A-426D-AE5D-1EF6C2F40382}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE6B65B8-4980-4602-8BAF-4E3A35E323F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE6B65B8-4980-4602-8BAF-4E3A35E323F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE6B65B8-4980-4602-8BAF-4E3A35E323F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE6B65B8-4980-4602-8BAF-4E3A35E323F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72B2E882-E125-493C-B431-C17682B89912}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72B2E882-E125-493C-B431-C17682B89912}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72B2E882-E125-493C-B431-C17682B89912}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72B2E882-E125-493C-B431-C17682B89912}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
