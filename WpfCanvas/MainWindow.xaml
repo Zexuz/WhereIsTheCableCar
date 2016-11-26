@@ -1,6 +1,13 @@
 <Window x:Class="WpfCanvas.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="CanvasZIndex" Height="275" Width="260">
+        Title="CanvasZIndex" Height="275" Width="260"
+        WindowStartupLocation="Manual"
+        Left="800" Top="400">
 
+    <Canvas  Name="PaintSurface" >
+        <Canvas.Background>
+            <SolidColorBrush Color="White" Opacity="0"/>
+        </Canvas.Background>
+    </Canvas>
 </Window>

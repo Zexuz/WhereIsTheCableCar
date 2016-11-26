@@ -16,7 +16,7 @@ namespace Runner
 
             foreach (var cc in cableCars)
             {
-                Console.WriteLine($"Nr {cc.name}, dir {cc.direction}");
+                Console.WriteLine($"Nr {cc.Name}, dir {cc.Direction}");
             }
         }
     }

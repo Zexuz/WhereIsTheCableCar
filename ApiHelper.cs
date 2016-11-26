@@ -20,7 +20,7 @@ namespace WhereIsTheCableCar
             httpCliet.DefaultRequestHeaders.Authorization = authHeader;
 
             var url =
-                "https://api.vasttrafik.se/bin/rest.exe/v2/livemap?minx=1000000&maxx=80000000&miny=1000000&maxy=80000000&onlyRealtime=yes";
+                "https://api.vasttrafik.se/bin/rest.exe/v2/livemap?minx=11892060&maxx=12004475&miny=57678144&maxy=57705963&onlyRealtime=yes";
 
             var res = await httpCliet.GetAsync(url);
             var responseJson = await res.Content.ReadAsStringAsync();
@@ -68,16 +68,16 @@ namespace WhereIsTheCableCar
 
     public class Vehicle
     {
-        public string x { get; set; }
-        public string y { get; set; }
-        public string name { get; set; }
-        public string direction { get; set; }
-        public string prodclass { get; set; }
-        public string delay { get; set; }
+        public string X { get; set; }
+        public string Y { get; set; }
+        public string Name { get; set; }
+        public string Direction { get; set; }
+        public string Prodclass { get; set; }
+        public string Delay { get; set; }
 
         public new Vehicles GetType()
         {
-            switch (prodclass.ToLower())
+            switch (Prodclass.ToLower())
             {
                    case "vas":
                     return Vehicles.WestTrain;
