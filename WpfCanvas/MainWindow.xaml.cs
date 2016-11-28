@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WhereIsTheCableCar;
 
@@ -19,12 +20,40 @@ namespace WpfCanvas
         private int _minY = 57678144;
         private int _maxY = 57705963;
 
+        private int deltaX = 112415;
+        private int deltaY = 27819;
 
 
         public MainWindow()
         {
             InitializeComponent();
+            SetWindowSize();
             DrawLines();
+        }
+
+        private void SetWindowSize()
+        {
+            Application.Current.MainWindow.Left = 30;
+            Application.Current.MainWindow.Top = 30;
+            Application.Current.MainWindow.Width = 1870;
+            Application.Current.MainWindow.Height = 970;
+            Application.Current.MainWindow.ResizeMode = ResizeMode.NoResize;
+
+            var ib = new ImageBrush
+            {
+                ImageSource = new BitmapImage(new Uri(@"C:\Users\Desktop\Pictures\image.png", UriKind.Relative))
+            };
+            MyCanvas.Background = ib;
+        }
+
+        private void MyCanvas_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var deltaLat = 60.11497326203 * e.GetPosition(MyCanvas).X;
+            var realLat = Math.Round(deltaLat + _minX);
+
+
+            var deltaLong = 28.6793814432 * e.GetPosition(MyCanvas).Y;
+            var realLong = Math.Round(deltaLong + _minY);
         }
 
         public async void DrawLines()
@@ -38,26 +67,33 @@ namespace WpfCanvas
                 {
                     var rect = new Rectangle
                     {
-                        Stroke = new SolidColorBrush(Colors.Black), Fill = new SolidColorBrush(Colors.Black), Width = 10, Height = 10
+                        Stroke = new SolidColorBrush(Colors.Black),
+                        Fill = new SolidColorBrush(Colors.Black),
+                        Width = 2,
+                        Height = 2
                     };
-                    Console.WriteLine($"Nr {cc.Name}, dir {cc.Direction}");
-
-                    var y = (_maxY - double.Parse(cc.Y)) / 100;
-                    var x = (_maxX - double.Parse(cc.X)) / 100;
 
                     TextBlock textBlock = new TextBlock();
-                    textBlock.Text = $"{cc.Y}, {cc.X}";
+                    textBlock.Text = $"{cc.Name}";
 
-                    Canvas.SetLeft(textBlock, x + 10);
-                    Canvas.SetTop(textBlock, y + 10);
-                    Canvas.SetTop(rect, y);
-                    Canvas.SetLeft(rect, x);
+                    var y = double.Parse(cc.Y);
+                    var x = double.Parse(cc.X);
 
-                    PaintSurface.Children.Add(textBlock);
-                    PaintSurface.Children.Add(rect);
+                    var yPos = (y - _minY) / deltaY * 970;
+                    var xPos = (x - _minX) / deltaX * 1870;
+
+                    Canvas.SetBottom(rect, yPos);
+                    Canvas.SetLeft(rect, xPos);
+
+                    Canvas.SetBottom(textBlock, yPos  +15);
+                    Canvas.SetLeft(textBlock, xPos + 15);
+
+                    Trace.WriteLine($"{yPos}:{xPos}");
+                    MyCanvas.Children.Add(rect);
+                    MyCanvas.Children.Add(textBlock);
                 }
 
-                await Task.Delay(2000 * 10);
+                await Task.Delay(500);
             }
         }
     }
