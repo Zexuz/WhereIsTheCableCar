@@ -37,7 +37,6 @@ namespace WpfCanvas
             Application.Current.MainWindow.Top = 30;
             Application.Current.MainWindow.Width = 1870;
             Application.Current.MainWindow.Height = 970;
-            Application.Current.MainWindow.ResizeMode = ResizeMode.NoResize;
 
             var ib = new ImageBrush
             {
@@ -79,8 +78,8 @@ namespace WpfCanvas
                     var y = double.Parse(cc.Y);
                     var x = double.Parse(cc.X);
 
-                    var yPos = (y - _minY) / deltaY * 970;
-                    var xPos = (x - _minX) / deltaX * 1870;
+                    var yPos = (y - _minY) / deltaY * Application.Current.MainWindow.Height;
+                    var xPos = (x - _minX) / deltaX * Application.Current.MainWindow.Width;
 
                     Canvas.SetBottom(rect, yPos);
                     Canvas.SetLeft(rect, xPos);
@@ -88,13 +87,26 @@ namespace WpfCanvas
                     Canvas.SetBottom(textBlock, yPos  +15);
                     Canvas.SetLeft(textBlock, xPos + 15);
 
-                    Trace.WriteLine($"{yPos}:{xPos}");
+
+                    rect.MouseEnter += Test;
+
                     MyCanvas.Children.Add(rect);
                     MyCanvas.Children.Add(textBlock);
                 }
 
                 await Task.Delay(500);
             }
+        }
+
+        private void Test(object sender, MouseEventArgs mouseEventArgs)
+        {
+            Trace.WriteLine("Asd");
+
+        }
+
+        private void MainWindow_OnSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            MyCanvas.Children.Clear();
         }
     }
 }
